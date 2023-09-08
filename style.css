@@ -1,0 +1,37 @@
+body {
+    font-family: 'Arial, sans-serif';
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  .title {
+    text-align: center;
+    font-size: 32px; 
+    margin-bottom: 20px; 
+    text-transform: uppercase;
+  }
+  .list {
+    font-size: 18px; 
+  }
+  .post-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .post-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #008CBA; 
+    color: #fff; 
+    border: none;
+    cursor: pointer;
+  }
+  .username-input {
+    flex: 3; 
+    padding: 10px;
+    font-size: 16px; 
+    border: 1px solid #ccc; /* 入力フィールドの境界線を追加 */
+  }
