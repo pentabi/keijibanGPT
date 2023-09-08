@@ -15,12 +15,14 @@
         </div>
     </div>
 
-    <div class="threads">
+    < class="threads">
         <div class="thread-text">スレッド</div>
         <!-- スレッドfor分 -->
         {% threads = ["明日晴れてほしいスレ", "Thread 2", "Thread 3"] %}
         {% for thread in threads %}
-        <div class="gray-box">{{ thread }}</div>
+        <a href="test2.html">
+            <div class="gray-box">{{ thread }}</div>
+        </a>
         {% endfor %}
     </div>
 </body>
