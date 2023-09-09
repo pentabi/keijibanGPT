@@ -15,10 +15,9 @@ def thread_insert(
     thread_db_cur.execute("INSERT INTO thread(thread_name) VALUES(?)", (thread_now_name,))
     thread_db_conn.commit()
 
-    thread_db_cur.close()
-    thread_db_conn.close()
 
-# 内容は{スレッド番号(ID), ユーザーID, ユーザの名前, 投稿内容,　時刻, 人物フラグ(false=人間, true=chatGPT)}
+
+# 内容は{スレッド番号(ID), ユーザーID, ユーザの名前, 投稿内容, 時刻, 人物フラグ(false=人間, true=chatGPT)}
 def comment_insert(
         # user_id,
         thread_now_id,
@@ -33,8 +32,7 @@ def comment_insert(
     comment_db_cur.execute("INSERT INTO comment(flag) VALUES(?)",(now_flag,))
     thread_db_conn.commit()
 
-    thread_db_cur.close()
-    thread_db_conn.close()
+
 
 
 

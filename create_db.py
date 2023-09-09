@@ -19,11 +19,11 @@ comment_db_cur = comment_db_conn.cursor()
 
 # tableを作る
 thread_db_cur.execute(
-    "CREATE TABLE thread(thread_id INTEGER PRIMARY KEY AUTOINCREMENT, thread_name STRING)"
+    "CREATE TABLE IF NOT EXISTS thread(thread_id INTEGER PRIMARY KEY AUTOINCREMENT, thread_name STRING)"
 )
 # 時刻は表示方法がわからないので保留中
 comment_db_cur.execute(
-    "CREATE TABLE comment(id INTEGER PRIMARY KEY AUTOINCREMENT, thread_id NUMBER, name STRING, content STRING, flag BOOLEAN)"
+    "CREATE TABLE IF NOT EXISTS comment(id INTEGER PRIMARY KEY AUTOINCREMENT, thread_id NUMBER, name STRING, content STRING, flag BOOLEAN)"
 )
 
 
