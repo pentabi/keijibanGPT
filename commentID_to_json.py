@@ -26,6 +26,6 @@ def get_comments_by_thread_id(thread_id):
 
 # Usage example:
 if __name__ == "__main__":
-    thread_id = 1  # 取得したいコメントのスレッドIDを指定
+    thread_id = 2  # 取得したいコメントのスレッドIDを指定
     comments_json = get_comments_by_thread_id(thread_id)
     print(comments_json)
