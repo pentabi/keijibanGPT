@@ -21,7 +21,7 @@ def comment_insert(
     comment_db_cur.execute("INSERT INTO comment(name) VALUES(?)",(user_name,))
     comment_db_cur.execute("INSERT INTO comment(content) VALUES(?)",(now_content,))
     comment_db_cur.execute("INSERT INTO comment(flag) VALUES(?)",(now_flag,))
-    thread_db_conn.commit()
+    comment_db_conn.commit()
 
 
 
