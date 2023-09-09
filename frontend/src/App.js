@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/thread" element={<Thread />} />
         </Routes>
       </BrowserRouter>
     </div>
