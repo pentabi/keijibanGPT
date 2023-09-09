@@ -46,8 +46,8 @@ const Home = (props) => {
 
         <div class="threads">
           <div class="thread-text">スレッド</div>
-          <a href="thread.html"><div class="gray-box">明日晴れてほしいスレ</div></a>
-          <a href="thread.html"><div class="gray-box">明日曇りがいいスレ</div></a>
+          <div class="gray-box">明日晴れてほしいスレ</div>
+          <div class="gray-box">明日曇りがいいスレ</div>
         </div>
       </body>
     </div>
