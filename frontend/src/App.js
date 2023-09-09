@@ -1,17 +1,15 @@
 import './App.css';
-import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import "./components/Home";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home"
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/thread" />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate replace to="/home" />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
     </div>
   );
 }
