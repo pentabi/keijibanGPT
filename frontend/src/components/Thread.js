@@ -3,16 +3,34 @@ import { useNavigate, useRoute, useParams, useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { ROUTES } from "../routes/routes";
 import TextField from '@mui/material/TextField';
+import CircularProgress from "@mui/material/CircularProgress";
 import ApiClient from '../api/ApiClient';
 
-const Thread = (props, route) => {
+const Thread = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { thread_id, thread_name, comment_list } = location.state;
+  const { thread_id, thread_name } = location.state;
+  const [commentList, setCommentList] = useState({ "comment_list": [] });
   const [name, setName] = useState();
   const [text, setText] = useState();
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const apiClient = ApiClient.instance;
+
+  useEffect(() => {
+    setLoading(true);
+    apiClient
+      .get(ROUTES.THREAD + "/" + thread_id)
+      .then((res) => {
+        setCommentList(res);
+        setLoading(false);
+        commentList["comment_list"].map((d) => { console.log(d) })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
 
   const handlePost = () => {
     if (text === "") {
@@ -58,8 +76,9 @@ const Thread = (props, route) => {
           </div>
 
           <div class="list">
+            {loading && <CircularProgress color="inherit" />}
             {
-              comment_list.map((d) => {
+              commentList["comment_list"].map((d) => {
                 return (
                   <div>
                     <p>
@@ -69,7 +88,6 @@ const Thread = (props, route) => {
                       {d["comment"]["content"]}
                     </p>
                   </div>
-
                 )
               })
             }

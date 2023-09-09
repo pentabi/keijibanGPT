@@ -12,57 +12,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ApiClient from "../api/ApiClient";
 
-// const data = {
-//   "thread_list": [
-//     {
-//       "thread": {
-//         "thread_id": 1,
-//         "thread_name": "hello",
-//         "comment_list": [
-//           {
-//             "comment": {
-//               "comment_id": 1,
-//               "name": "dai",
-//               "content": "Hello",
-//               "chatGpt": true
-//             }
-//           }, {
-//             "comment": {
-//               "comment_id": 2,
-//               "name": "tabito",
-//               "content": "Good night!",
-//               "chatGpt": false
-//             }
-//           }
-//         ]
-//       }
-//     },
-//     {
-//       "thread": {
-//         "thread_id": 1,
-//         "thread_name": "Good Night",
-//         "comment_list": [
-//           {
-//             "comment": {
-//               "comment_id": 1,
-//               "name": "dai",
-//               "content": "Hello",
-//               "chatGpt": true
-//             }
-//           }, {
-//             "comment": {
-//               "comment_id": 2,
-//               "name": "tabito",
-//               "content": "Good night!",
-//               "chatGpt": false
-//             }
-//           }
-//         ]
-//       }
-//     }
-//   ]
-// }
-
 const Popup = (props) => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
@@ -132,7 +81,7 @@ const Home = (props) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [create, setCreate] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState({ "thread_list": [] });
   const apiClient = ApiClient.instance;
 
   useEffect(() => {
@@ -141,8 +90,6 @@ const Home = (props) => {
       .get(ROUTES.HOME)
       .then((res) => {
         setData(res);
-        console.log(res);
-        console.log(data["thread_list"])
         setLoading(false);
       })
       .catch((err) => {
@@ -174,7 +121,7 @@ const Home = (props) => {
           {
             data["thread_list"].map((d) => {
               return (
-                <p>
+                <div>
                   <button class="gray-box"
                     onClick={() => {
                       const id = d["thread"]["thread_id"];
@@ -189,7 +136,7 @@ const Home = (props) => {
                   >
                     {d["thread"]["thread_name"]}
                   </button>
-                </p>
+                </div>
               );
             })
           }
