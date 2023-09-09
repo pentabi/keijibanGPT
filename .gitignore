@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,flask
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,python,flask
-
-### API KEY
-api_key.txt
-=======
 # Created by https://www.toptal.com/developers/gitignore/api/flask,visualstudio,python,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask,visualstudio,python,react
->>>>>>> feature/4_Making_design_better
 
 ### Flask ###
 instance/*
@@ -267,9 +259,6 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
-<<<<<<< HEAD
-### VisualStudioCode ###
-=======
 ### react ###
 .DS_*
 logs
@@ -661,32 +650,16 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # VS Code files for those working on multiple tools
->>>>>>> feature/4_Making_design_better
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-<<<<<<< HEAD
-!.vscode/*.code-snippets
-=======
 *.code-workspace
->>>>>>> feature/4_Making_design_better
 
 # Local History for Visual Studio Code
 .history/
 
-<<<<<<< HEAD
-# Built Visual Studio Code Extensions
-*.vsix
-
-### VisualStudioCode Patch ###
-# Ignore all local history of files
-.history
-.ionide
-
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,flask
-=======
 # Windows Installer files from build outputs
 *.cab
 *.msi
@@ -701,4 +674,3 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/flask,visualstudio,python,react
->>>>>>> feature/4_Making_design_better
