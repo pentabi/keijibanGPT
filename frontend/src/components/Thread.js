@@ -9,7 +9,8 @@ const Thread = (props) => {
         </head>
         <body>
         <div class="container">
-            
+            {/* 戻るを押せるようにする */}
+            <div class="to-left">戻る</div>
             <div class="title">
             明日晴れるといいなスレ
             </div>
