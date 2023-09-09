@@ -21,6 +21,25 @@ p{
     color: rgb(85,85,85);
 }
 
+/* get rid of the button default */
+
+button {
+    /* Remove default button border and outline */
+    border: none;
+    outline: none;
+
+    /* Remove default box-shadow */
+    box-shadow: none;
+
+    /* Optional: Remove button background color and padding */
+    background: none;
+    padding: 0;
+    margin: 0;
+
+    /* Optional: Set the cursor to pointer on hover */
+    cursor: pointer;
+}
+
 /* HEADER */
 .header {
     display: flex;
