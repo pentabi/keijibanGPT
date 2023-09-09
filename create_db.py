@@ -7,7 +7,7 @@ import sqlite3
 thread_db = 'thread.db'
 
 # 全スレッドの全コメント管理するデータベース
-# 内容は{スレッド番号(ID), ユーザーID, ユーザの名前, 投稿内容,　時刻, 人物フラグ(false=人間, true=chatGPT)}
+# 内容は{スレッド番号(ID), ユーザーID, ユーザの名前, 投稿内容, 時刻, 人物フラグ(false=人間, true=chatGPT)}
 comment_db = "comment.db"
 
 thread_db_conn = sqlite3.connect(thread_db)
