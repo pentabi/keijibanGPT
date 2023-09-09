@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 import myproject.chatgpt_response
 from backend import insert
-from backend import select
 
 app = Flask(__name__)
 
