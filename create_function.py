@@ -6,24 +6,11 @@ def thread_insert(thread_now_name):
     thread_db_cur.execute("INSERT INTO thread(thread_name) VALUES(?)", (thread_now_name,))
     thread_db_conn.commit()
 
-
-
 # 内容は{スレッド番号(ID), ユーザーID, ユーザの名前, 投稿内容, 時刻, 人物フラグ(false=人間, true=chatGPT)}
-def comment_insert(
-        # user_id,
-        thread_now_id,
-        user_name,
-        now_content,
-        now_flag
-    ):
-    # comment_db_cur.execute('INSERT INTO comment (id) values(user_id)')
-    comment_db_cur.execute("INSERT INTO comment(thread_id) VALUES(?)",(thread_now_id,))
-    comment_db_cur.execute("INSERT INTO comment(name) VALUES(?)",(user_name,))
-    comment_db_cur.execute("INSERT INTO comment(content) VALUES(?)",(now_content,))
-    comment_db_cur.execute("INSERT INTO comment(flag) VALUES(?)",(now_flag,))
+def comment_insert(thread_now_id, user_name, now_content, now_flag):
+    comment_db_cur.execute("INSERT INTO comment(thread_id, name, content, flag) VALUES(?, ?, ?, ?)",
+                            (thread_now_id, user_name, now_content, now_flag))
     comment_db_conn.commit()
-
-
 
 # テスト
 # thread_insert("スレッド新規作成テスト")
