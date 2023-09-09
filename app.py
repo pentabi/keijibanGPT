@@ -1,17 +1,13 @@
-from flask import Flask, request, render_template
-import myproject.chatgpt_response
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
-def form():
-    return render_template('form.html')
 
-@app.route('/submit', methods=['POST'])
-def submit():
-    message = request.form['message']
-    response = myproject.chatgpt_response.Chatgpt_response(message)
-    return response
+@app.route("/")
+def bbs():
+    message = "Hello"
+    return render_template("index.html", message = message)
 
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True)
+
