@@ -26,9 +26,3 @@ thread_db_cur.execute(
 comment_db_cur.execute(
     "CREATE TABLE IF NOT EXISTS comment(id INTEGER PRIMARY KEY AUTOINCREMENT, thread_id NUMBER, name STRING, content STRING, flag BOOLEAN)"
 )
-
-
-
-
-# thread_db_conn.close()
-# comment_db_conn.close()

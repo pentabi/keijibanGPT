@@ -19,7 +19,6 @@ const Popup = (props) => {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    console.log("name: " + name);
     if (name === "") {
       setError(true);
       return;
@@ -27,7 +26,7 @@ const Popup = (props) => {
     const data = { "thread_add": { "thread_name": name } };
     console.log(data);
     apiClient
-      .post("create", data)
+      .post("home", data)
       .then((res) => {
         console.log(res);
         navigate(ROUTES.HOME);

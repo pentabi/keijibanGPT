@@ -5,6 +5,7 @@ import sqlite3
 # Function to add a new thread based on JSON data
 def add_thread(json_data):
     data = json.loads(json_data)
+    print(data)
 
     if "thread_add" in data:
         thread_name = data["thread_add"]["thread_name"]
