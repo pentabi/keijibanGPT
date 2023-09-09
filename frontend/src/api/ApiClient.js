@@ -2,7 +2,7 @@ import axios from "axios";
 
 class ApiClient {
   constructor() {
-    this.baseUrl = "http://localhost:5500";
+    this.baseUrl = "http://127.0.0.001:5000";
   }
 
   async get(path) {

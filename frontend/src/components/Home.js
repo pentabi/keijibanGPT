@@ -5,62 +5,63 @@ import { useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
+import CircularProgress from "@mui/material/CircularProgress";
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ApiClient from "../api/ApiClient";
 
-const data = {
-  "thread_list": [
-    {
-      "thread": {
-        "thread_id": 1,
-        "thread_name": "hello",
-        "comment_list": [
-          {
-            "comment": {
-              "comment_id": 1,
-              "name": "dai",
-              "content": "Hello",
-              "chatGpt": true
-            }
-          }, {
-            "comment": {
-              "comment_id": 2,
-              "name": "tabito",
-              "content": "Good night!",
-              "chatGpt": false
-            }
-          }
-        ]
-      }
-    },
-    {
-      "thread": {
-        "thread_id": 1,
-        "thread_name": "Good Night",
-        "comment_list": [
-          {
-            "comment": {
-              "comment_id": 1,
-              "name": "dai",
-              "content": "Hello",
-              "chatGpt": true
-            }
-          }, {
-            "comment": {
-              "comment_id": 2,
-              "name": "tabito",
-              "content": "Good night!",
-              "chatGpt": false
-            }
-          }
-        ]
-      }
-    }
-  ]
-}
+// const data = {
+//   "thread_list": [
+//     {
+//       "thread": {
+//         "thread_id": 1,
+//         "thread_name": "hello",
+//         "comment_list": [
+//           {
+//             "comment": {
+//               "comment_id": 1,
+//               "name": "dai",
+//               "content": "Hello",
+//               "chatGpt": true
+//             }
+//           }, {
+//             "comment": {
+//               "comment_id": 2,
+//               "name": "tabito",
+//               "content": "Good night!",
+//               "chatGpt": false
+//             }
+//           }
+//         ]
+//       }
+//     },
+//     {
+//       "thread": {
+//         "thread_id": 1,
+//         "thread_name": "Good Night",
+//         "comment_list": [
+//           {
+//             "comment": {
+//               "comment_id": 1,
+//               "name": "dai",
+//               "content": "Hello",
+//               "chatGpt": true
+//             }
+//           }, {
+//             "comment": {
+//               "comment_id": 2,
+//               "name": "tabito",
+//               "content": "Good night!",
+//               "chatGpt": false
+//             }
+//           }
+//         ]
+//       }
+//     }
+//   ]
+// }
 
 const Popup = (props) => {
   const [name, setName] = useState("");
@@ -129,7 +130,25 @@ const Popup = (props) => {
 
 const Home = (props) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [create, setCreate] = useState(false);
+  const [data, setData] = useState();
+  const apiClient = ApiClient.instance;
+
+  useEffect(() => {
+    setLoading(true);
+    apiClient
+      .get(ROUTES.HOME)
+      .then((res) => {
+        setData(res);
+        console.log(res);
+        console.log(data["thread_list"])
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, []);
 
   return (
     <div>
@@ -151,6 +170,7 @@ const Home = (props) => {
 
         <div class="threads">
           <div class="thread-text">スレッド</div>
+          {loading && <CircularProgress color="inherit" />}
           {
             data["thread_list"].map((d) => {
               return (
@@ -158,7 +178,7 @@ const Home = (props) => {
                   <button class="gray-box"
                     onClick={() => {
                       const id = d["thread"]["thread_id"];
-                      navigate(`${ROUTES.THREAD}/`, {
+                      navigate(`${ROUTES.THREAD}`, {
                         state: {
                           "thread_id": d["thread"]["thread_id"],
                           "thread_name": d["thread"]["thread_name"],
