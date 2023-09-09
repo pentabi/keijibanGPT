@@ -1,8 +1,7 @@
 from flask import Flask, request, render_template
 import myproject.chatgpt_response
-from datetime import datetime
-from flask_sqlalchemy import flask_sqlalchemy
-import sqlite3
+from backend import insert
+from backend import select
 
 app = Flask(__name__)
 
@@ -14,6 +13,7 @@ def form():
 def submit():
     message = request.form['message']
     response = myproject.chatgpt_response.Chatgpt_response(message)
+    insert.insert(response)
     return render_template("form.html", response=response)
 
 if __name__ == '__main__':

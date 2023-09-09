@@ -1,10 +1,10 @@
 import sqlite3
 
-def insert_data(response):
+def insert(response):
     con = sqlite3.connect('./sample.db')
     cur = con.cursor()
-    sql = 'INSERT INTO TEST (id, name) values (?,?)'
-    data = [1, response]
-    cur.execute(sql, data)
+    cur.execute("CREATE TABLE IF NOT EXISTS TEST(id INTEGER PRIMARY KEY AUTOINCREMENT,value json)")
+    cur.execute("INSERT INTO TEST(name) VALUES(?)", (response,))
+    cur.execute("SELECT * FROM TEST")
     con.commit()
     con.close()
