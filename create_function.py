@@ -1,17 +1,8 @@
-# 各種関数を定義するファイルです。
-
 import sqlite3
-
 from create_db import thread_db_cur, comment_db_cur, thread_db_conn, comment_db_conn
 
-
-
 # スレッドに新しいスレッドを追加する関数
-def thread_insert(
-        # thread__now_id,
-        thread_now_name
-        ):
-    # thread_db_cur.execute('INSERT INTO thread (thread_id) values(thread_now_id)')
+def thread_insert(thread_now_name):
     thread_db_cur.execute("INSERT INTO thread(thread_name) VALUES(?)", (thread_now_name,))
     thread_db_conn.commit()
 
@@ -34,16 +25,8 @@ def comment_insert(
 
 
 
-
-
 # テスト
 # thread_insert("スレッド新規作成テスト")
-# comment_insert(
-#     1,
-#     "テスト君",
-#     "コメント追加テストです。",
-#     True
-#     )
+# comment_insert(1, "テスト君", "コメント追加テストです。", True)
 
-
-
+# Don't close cursors and connections here, as they should be closed after all operations are done.
