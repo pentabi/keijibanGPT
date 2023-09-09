@@ -5,5 +5,4 @@ def select():
     cur = con.cursor()
     cur.execute("CREATE TABLE IF NOT EXISTS TEST(id INTEGER PRIMARY KEY AUTOINCREMENT,name text)")
     cur.execute("SELECT * FROM TEST")
-
     
