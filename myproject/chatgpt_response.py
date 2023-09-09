@@ -2,24 +2,18 @@ from flask import Flask
 import openai
 import os
 
-app = Flask(__name__)
 
-@app.route("/", methods=["GET"])
-def Chatgpt_response():
-    openai.api_key = ""
-
-    chat = input("質問を入力: ")
+def Chatgpt_response(message):
+    openai.api_key = "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" #自分のAPI KEYを入力
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "斜に構えた態度で話して"},
             {"role": "system", "content": "ひねくれた態度で話して"},
-            {"role": "user", "content": chat},
+            {"role": "user", "content": message},
         ],
     )
 
-    print(response['choices'][0]['message']['content'])
+    return response['choices'][0]['message']['content']
 
-while True:
-    Chatgpt_response()
