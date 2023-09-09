@@ -8,3 +8,9 @@ comment_insert(
     "関数のテストです。",
     False
 )
+comment_insert(
+    1,
+    "tabito",
+    "僕もテストです。",
+    False
+)

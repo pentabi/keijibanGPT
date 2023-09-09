@@ -17,14 +17,16 @@ comment_db_conn = sqlite3.connect(comment_db)
 thread_db_cur = thread_db_conn.cursor()
 comment_db_cur = comment_db_conn.cursor()
 
-# tableを作る
+# Create the thread table if it does not exist
 thread_db_cur.execute(
-    "CREATE TABLE thread(thread_id INTEGER PRIMARY KEY AUTOINCREMENT, thread_name STRING)"
+    "CREATE TABLE IF NOT EXISTS thread(thread_id INTEGER PRIMARY KEY AUTOINCREMENT, thread_name STRING)"
 )
-# 時刻は表示方法がわからないので保留中
+
+# Create the comment table if it does not exist
 comment_db_cur.execute(
-    "CREATE TABLE comment(id INTEGER PRIMARY KEY AUTOINCREMENT, thread_id NUMBER, name STRING, content STRING, flag BOOLEAN)"
+    "CREATE TABLE IF NOT EXISTS comment(id INTEGER PRIMARY KEY AUTOINCREMENT, thread_id NUMBER, name STRING, content STRING, flag BOOLEAN)"
 )
+
 
 
 
