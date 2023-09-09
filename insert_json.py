@@ -1,7 +1,7 @@
 import sqlite3
 import json
 
-from create_db import thread_db_cur, comment_db_cur, thread_db_conn, comment_db_conn
+from backend.create_db import thread_db_cur, comment_db_cur, thread_db_conn, comment_db_conn
 
 # Function to add a new thread based on JSON data
 def add_thread_from_json(json_data):
