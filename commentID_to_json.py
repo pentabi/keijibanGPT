@@ -1,7 +1,7 @@
 import sqlite3
 import json
 
-from create_db import comment_db_cur, comment_db_conn
+from backend.create_db import comment_db_cur, comment_db_conn
 
 # 指定したスレッドIDに関連するコメントを取得し、リストのJSON形式で返す関数
 def get_comments_by_thread_id(thread_id):
