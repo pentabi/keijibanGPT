@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import request, jsonify
 from flask_cors import CORS
-import json
 from db import get_comment, get_thread, add_comment, add_thread
 
 app = Flask(__name__)

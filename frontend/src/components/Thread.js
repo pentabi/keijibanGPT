@@ -43,10 +43,12 @@ const Thread = (props) => {
       setError(true);
       return;
     }
+    var data;
     if (name === "") {
-      setName("匿名");
+      data = { "comment_add": { "thread_id": thread_id, "content": text, "name": "匿名" } };
+    } else {
+      data = { "comment_add": { "thread_id": thread_id, "content": text, "name": name } };
     }
-    const data = { "comment_add": { "thread_id": thread_id, "content": text, "name": name } };
     apiClient
       .post(`thread/${thread_id}`, data)
       .then((res) => {

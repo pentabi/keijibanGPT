@@ -671,4 +671,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 ### DB ###
-.db
+backend/thread.db
+backend/comment.db
