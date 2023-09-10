@@ -25,6 +25,7 @@ body {
   flex-direction: column; /* 要素を縦に配置 */
   align-items: flex-start; /* 要素を左寄せ */
   gap: 10px;
+  margin-top: 20px;
 }
 .post-button {
   padding: 10px 15px;
@@ -50,8 +51,12 @@ body {
   border: 1px solid #ccc; 
   width: 100%; /* フィールドの幅を100%に設定 */
   box-sizing: border-box; /* パディングとボーダーを含めて100%に */
+  margin-top:20px;
 }
 
 textarea.input-field {
   width: 100%; /* 幅を100%に変更 */
+}
+.name-field{
+  margin-top:20px;
 }
