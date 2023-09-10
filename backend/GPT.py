@@ -28,7 +28,7 @@ def chat_gpt_periodically():
             for comment in comment_list:
                 message.append({"role": "system", "content": str(cnt) + " " + comment['content']})
                 cnt += 1
-            
+
             message.append({"role": "system", "content": str(cnt) + " ???(あなたの返信がここに来る)"})
             message.append({"role": "system", "content": "前の会話に当てはまるコメントを返してください"})
 
