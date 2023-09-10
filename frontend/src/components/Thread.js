@@ -18,18 +18,24 @@ const Thread = (props) => {
 
   const apiClient = ApiClient.instance;
 
-  useEffect(() => {
+  const fetch = () => {
     setLoading(true);
     apiClient
       .get(ROUTES.THREAD + "/" + thread_id)
       .then((res) => {
         setCommentList(res);
+        setName("");
+        setText("");
+        setError(false);
         setLoading(false);
-        commentList["comment_list"].map((d) => { console.log(d) })
       })
       .catch((err) => {
         console.log(err);
       })
+  }
+
+  useEffect(() => {
+    fetch();
   }, []);
 
   const handlePost = () => {
@@ -40,20 +46,11 @@ const Thread = (props) => {
     if (name === "") {
       setName("匿名");
     }
-    setError(true);
     const data = { "comment_add": { "thread_id": thread_id, "content": text, "name": name } };
     apiClient
-      .post(`thread/${thread_id}/`, data)
+      .post(`thread/${thread_id}`, data)
       .then((res) => {
-        console.log(res);
-        apiClient
-          .get(`thread/${thread_id}/`)
-          .then((res) => {
-            /// ここにコードを追加！！！
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        fetch();
       })
       .catch((err) => {
         console.log(err);
@@ -93,14 +90,15 @@ const Thread = (props) => {
             }
           </div>
           <div class="post-section">
-            <TextField id="outlined-basic" label="名前" variant="outlined" onChange={(e) => { setName(e.target.value) }}></TextField>
-            <TextField id="outlined-basic" fullWidth label="書き込み" variant="outlined" multiline rows={2} error={error}
+            <TextField id="outlined-basic" value={name} label="名前" variant="outlined" onChange={(e) => { setName(e.target.value) }}></TextField>
+            <TextField id="outlined-basic" fullWidth value={text} label="書き込み" variant="outlined" multiline rows={2} error={error}
               onChange={(e) => {
-                setName(e.target.value);
-                if (e.target.value === "") {
-                  setError(true);
-                } else {
+                setText(e.target.value);
+                setText(e.target.value);
+                if (e.target.value !== "") {
                   setError(false);
+                } else {
+                  setError(true);
                 }
               }}
             ></TextField>

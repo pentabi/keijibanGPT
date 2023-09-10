@@ -10,30 +10,22 @@ CORS(app)
 
 @app.route("/home", methods=["GET", "POST"])
 def home():
-    print("/home")
     if request.method == "GET":
         data = get_thread()
-        print("home: GET")
-        print(data)
         return data
     elif request.method == "POST" :
-        print("home: POST")
         add_thread(request.get_json())
-        return jsonify("ok")
+        return jsonify("success")
 
 @app.route("/thread/<id>", methods=["GET", "POST"])
 def thread(id):
     print("/thread")
     if request.method == "GET":
-        data = json.load(open("comment_list.json", "r"))
-        print("thread: GET")
-        print(data)
+        data = get_comment(id)
         return data
-    else:
-        data = request.get_json()
-        print("thread: POST")
-        print(data)
-        return jsonify("ok")
+    elif request.method == "POST":
+        add_comment(request.get_json())
+        return jsonify("success")
 
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

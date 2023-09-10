@@ -4,11 +4,8 @@ import sqlite3
 
 # Function to add a new thread based on JSON data
 def add_thread(json_data):
-    data = json.loads(json_data)
-    print(data)
-
-    if "thread_add" in data:
-        thread_name = data["thread_add"]["thread_name"]
+    if "thread_add" in json_data:
+        thread_name = json_data["thread_add"]["thread_name"]
         thread_db_cur.execute("INSERT INTO thread(thread_name) VALUES(?)", (thread_name,))
         thread_db_conn.commit()
         print("Thread added:", thread_name) #追加したスレッドを表示
@@ -17,10 +14,8 @@ def add_thread(json_data):
 
 # Function to add a new comment based on JSON data
 def add_comment(json_data):
-    data = json.loads(json_data)
-
-    if "comment_add" in data:
-        comment_data = data["comment_add"]
+    if "comment_add" in json_data:
+        comment_data = json_data["comment_add"]
         thread_id = comment_data["thread_id"]
         user_name = comment_data["name"]
         content = comment_data["content"]
