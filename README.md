@@ -36,7 +36,7 @@ python main.py
 * Delete Data Base
 ```bash
 cd backend
-rm commend.db thread.db
+rm comment.db thread.db
 ```
 
 ## Design
