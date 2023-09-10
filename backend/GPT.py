@@ -20,14 +20,15 @@ def chat_gpt_periodically():
         for thread_id in thread_ids:
             # チャットGPTへの最初の命令
             message = [
-                {"role": "system", "content": "斜に構えた態度で話して"},
-                {"role": "system", "content": "ひねくれた態度で話して"},
-                {"role": "system","content": "今から色々な人のコメントを送るので、話の流れに合ったコメントを二十行以内で返して下さい"},
+                {"role": "system","content": "あなたは今からネット掲示版にある、一つのスレッドのさまざまな人のコメントを受け取ります。あなたもそのスレッドの話の流れに合ったコメントを二十行以内で返して下さい"},
+                {"role": "system","content": "特に最後に受け取るコメントに返信するようにしてください"},
+                {"role": "system","content": "話が広がるように関係する新しい話題や自分の意見なども入れてください"},
             ]
 
             # スレタイトルを命令
             thread_title = get_thread_title_by_thread_id(thread_id)
             message.append({"role": "system", "content": "これが話題です： " + thread_title})
+            message.append({"role": "system", "content": "ではこれからがこの話題について話してるさまざまな人のコメントです"})
 
             #thread_idを選択
             comment_list = get_comments_by_thread_id(thread_id)
@@ -36,9 +37,9 @@ def chat_gpt_periodically():
                 continue
             for comment in comment_list:
                 message.append({"role": "system", "content": comment['content']})
-
+            message.append({"role": "system", "content": "これでさまざまの人のコメントが終わりです"})
             message.append({"role": "system", "content": "前の会話に当てはまるコメントを返してください"})
-            message.append({"role": "system", "content": "特に一個前のコメントにひねくれたコメントを返してください"})
+            message.append({"role": "system", "content": "特に最後のコメントに沿ったコメントを返してください"})
 
             # チャットGPTの返信を追加
             response = chatgpt_response.Chatgpt_response(message)
