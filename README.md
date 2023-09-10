@@ -36,8 +36,10 @@ python main.py
 * Run ChatGPT
 ```bash
 cd backend
+echo "PUT YOUR API KEY for ChatGPT" > api_key.txt
 python GPT.py
 ```
+*`"PUT YOUR API KEY for ChatGPT"`の部分はあなたのAPI KEYに変更してください。API KEYは[ChatGPT API KEY](https://platform.openai.com/account/api-keys)で入手できます。*
 
 * Delete Data Base
 ```bash
