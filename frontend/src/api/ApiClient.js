@@ -2,11 +2,11 @@ import axios from "axios";
 
 class ApiClient {
   constructor() {
-    this.baseUrl = "http://localhost:8000/";
+    this.baseUrl = "http://192.168.35.22:8000";
     this.config = {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:3000', // フロントエンドのオリジン
+        'Access-Control-Allow-Origin': 'http://192.168.35.22:3000', // フロントエンドのオリジン
       },
     };
   }
