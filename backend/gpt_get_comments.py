@@ -1,6 +1,6 @@
 import sqlite3
 
-from create_db import comment_db_cur, comment_db_conn, thread_db_conn,thread_db_cur
+from create import comment_db_cur, comment_db_conn, thread_db_conn,thread_db_cur
 
 # Function to get comments by thread ID and return a list of comment dictionaries
 def get_comments_by_thread_id(thread_id):
@@ -31,7 +31,7 @@ def get_thread_title_by_thread_id(thread_id):
         return thread_title[0]  # Extract the thread title from the result tuple
     else:
         return None  # Handle the case when no thread with the given ID is found
-    
+
 def get_all_thread_ids():
     try:
         thread_db_cur.execute("SELECT thread_id FROM thread")

@@ -1,2 +1,5 @@
 ### DB ###
 *.db
+
+### API KEY ###
+api_key.txt
