@@ -1,5 +1,5 @@
 import './thread.css';
-import { useNavigate, useRoute, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ROUTES } from "../routes/routes";
 import TextField from '@mui/material/TextField';
@@ -66,18 +66,18 @@ const Thread = (props) => {
         <link rel="stylesheet" href="style.css"></link>
       </head>
       <body>
-        <div class="container">
-          <button class="to-left" onClick={() => { navigate(ROUTES.HOME) }}>戻る</button>
-          <div class="title">
+        <div className="container">
+          <button className="to-left" onClick={() => { navigate(ROUTES.HOME) }}>戻る</button>
+          <div className="title">
             {thread_name}
           </div>
 
-          <div class="list">
+          <div className="list">
             {loading && <CircularProgress color="inherit" />}
             {
               commentList["comment_list"].map((d) => {
                 return (
-                  <div>
+                  <div style={{paddingTop: "20px"}}>
                     <p>
                       {d["comment"]["comment_id"]}: {d["comment"]["name"]}
                     </p>
@@ -89,11 +89,25 @@ const Thread = (props) => {
               })
             }
           </div>
-          <div class="post-section">
-            <TextField id="outlined-basic" value={name} label="名前" variant="outlined" onChange={(e) => { setName(e.target.value) }}></TextField>
-            <TextField id="outlined-basic" fullWidth value={text} label="書き込み" variant="outlined" multiline rows={2} error={error}
+          <div className="post-section">
+            <TextField
+              id="outlined-basic"
+              value={name}
+              label="名前"
+              variant="outlined"
+              onChange={(e) => { setName(e.target.value) }}
+              className="name-field" // 新しいスタイルをここに追加
+            ></TextField>
+            <TextField
+              id="outlined-basic"
+              fullWidth
+              value={text}
+              label="書き込み"
+              variant="outlined"
+              multiline
+              rows={2}
+              error={error}
               onChange={(e) => {
-                setText(e.target.value);
                 setText(e.target.value);
                 if (e.target.value !== "") {
                   setError(false);
@@ -102,13 +116,13 @@ const Thread = (props) => {
                 }
               }}
             ></TextField>
-            <button class="post-button" onClick={handlePost}>書き込む</button>
+            <button className="post-button" onClick={handlePost}>書き込む</button>
           </div>
         </div>
-
       </body>
     </div>
   );
 };
 
 export default Thread;
+
