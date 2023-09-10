@@ -10,8 +10,8 @@ thread_db = 'thread.db'
 # 内容は{スレッド番号(ID), ユーザーID, ユーザの名前, 投稿内容, 時刻, 人物フラグ(false=人間, true=chatGPT)}
 comment_db = "comment.db"
 
-thread_db_conn = sqlite3.connect(thread_db)
-comment_db_conn = sqlite3.connect(comment_db)
+thread_db_conn = sqlite3.connect(thread_db, check_same_thread=False)
+comment_db_conn = sqlite3.connect(comment_db, check_same_thread=False)
 
 # # sqliteを操作するカーソルオブジェクトを作成
 thread_db_cur = thread_db_conn.cursor()
@@ -26,3 +26,9 @@ thread_db_cur.execute(
 comment_db_cur.execute(
     "CREATE TABLE IF NOT EXISTS comment(id INTEGER PRIMARY KEY AUTOINCREMENT, thread_id NUMBER, name STRING, content STRING, flag BOOLEAN)"
 )
+
+
+
+
+# thread_db_conn.close()
+# comment_db_conn.close()

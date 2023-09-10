@@ -670,7 +670,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-### VisualStudio Patch ###
-# Additional files built by Visual Studio
-
-# End of https://www.toptal.com/developers/gitignore/api/flask,visualstudio,python,react
+### DB ###
+.db

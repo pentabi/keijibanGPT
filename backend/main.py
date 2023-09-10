@@ -1,7 +1,8 @@
 from flask import Flask
-from flask import request
+from flask import request, jsonify
 from flask_cors import CORS
 import json
+from db import get_comment, get_thread, add_comment, add_thread
 
 app = Flask(__name__)
 
@@ -10,23 +11,21 @@ CORS(app)
 @app.route("/home", methods=["GET", "POST"])
 def home():
     if request.method == "GET":
-        data = json.load(open("thread_list.json", "r"))
-        print("home: GET")
-        print(data)
+        data = get_thread()
         return data
     elif request.method == "POST" :
-        print("home: POST")
+        add_thread(request.get_json())
+        return jsonify("success")
 
 @app.route("/thread/<id>", methods=["GET", "POST"])
 def thread(id):
+    print("/thread")
     if request.method == "GET":
-        data = json.load(open("comment_list.json", "r"))
-        print("thread: GET")
-        print(data)
-        print(id)
+        data = get_comment(id)
         return data
-    else:
-        print("home: POST")
+    elif request.method == "POST":
+        add_comment(request.get_json())
+        return jsonify("success")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)

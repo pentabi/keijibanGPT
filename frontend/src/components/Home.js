@@ -19,7 +19,6 @@ const Popup = (props) => {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    console.log("name: " + name);
     if (name === "") {
       setError(true);
       return;
@@ -27,10 +26,20 @@ const Popup = (props) => {
     const data = { "thread_add": { "thread_name": name } };
     console.log(data);
     apiClient
-      .post("create", data)
+      .post("home", data)
       .then((res) => {
         console.log(res);
         navigate(ROUTES.HOME);
+        props.setLoading(true);
+        apiClient
+          .get(ROUTES.HOME)
+          .then((res) => {
+            props.setData(res);
+            props.setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       })
       .catch((err) => {
         console.log(err);
@@ -100,7 +109,7 @@ const Home = (props) => {
   return (
     <div>
       <title>掲示板GPT</title>
-      <Popup create={create} setCreate={setCreate} />
+      <Popup create={create} setCreate={setCreate} setData={setData} setLoading={setLoading} />
       <body>
         <div class="header">
           <div class="logo">掲示板GPT</div>
