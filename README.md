@@ -29,8 +29,14 @@ npm start
 * Run Backend Server
 ```bash
 cd backend
-pip install flask flask_cors numpy SQLAlchemy
+pip install flask flask_cors numpy SQLAlchemy openai
 python main.py
+```
+
+* Run ChatGPT
+```bash
+cd backend
+python GPT.py
 ```
 
 * Delete Data Base
