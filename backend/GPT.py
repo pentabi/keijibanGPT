@@ -39,7 +39,7 @@ def chat_gpt_periodically():
                 message.append({"role": "system", "content": comment['content']})
             message.append({"role": "system", "content": "これでさまざまの人のコメントが終わりです"})
             message.append({"role": "system", "content": "前の会話に当てはまるコメントを返してください"})
-            message.append({"role": "system", "content": "特に最後のコメントに沿ったコメントを出力してください。もし質問を含んでいたら、必ず答えるようにしてください"})
+            message.append({"role": "system", "content": "特に最後のコメントに沿ったコメントを出力してください。もし質問を含んでいたら、必ず答えるようにしてください。口調も周りのユーザーに似せてください"})
 
             # チャットGPTの返信を追加
             response = chatgpt_response.Chatgpt_response(message)
