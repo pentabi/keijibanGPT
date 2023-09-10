@@ -3,6 +3,7 @@ import chatgpt_response
 import insert
 from gpt_get_comments import get_comments_by_thread_id, get_thread_title_by_thread_id,get_all_thread_ids
 import time  # Import the time module
+import get_interval
 
 app = Flask(__name__)
 
@@ -43,7 +44,7 @@ def chat_gpt_periodically():
             response = chatgpt_response.Chatgpt_response(message)
             insert.insert(response,thread_id)
             print(response + " " + str(thread_id))
-            time.sleep(20)
+            time.sleep(get_interval.get_interval())
 
 if __name__ == '__main__':
     chat_gpt_periodically()
