@@ -114,41 +114,45 @@ const Home = (props) => {
         <div class="header">
           <div class="logo">掲示板GPT</div>
           <div class="button-container">
-            <button class="gray-button"
-              onClick={() => {
-                setCreate(true);
-              }}
-            >
-              スレを立てる
-            </button>
+            <div class="button-back">
+              <Button class="gray-button" variant="outlined"
+                onClick={() => {
+                  setCreate(true);
+                }}
+              >
+                スレを立てる
+              </Button>
+            </div>
           </div>
         </div>
 
         <div class="threads">
-          <div class="thread-text">スレッド</div>
-          {loading && <CircularProgress color="inherit" />}
-          {
-            data["thread_list"].map((d) => {
-              return (
-                <div>
-                  <button class="gray-box"
-                    onClick={() => {
-                      const id = d["thread"]["thread_id"];
-                      navigate(`${ROUTES.THREAD}`, {
-                        state: {
-                          "thread_id": d["thread"]["thread_id"],
-                          "thread_name": d["thread"]["thread_name"],
-                          "comment_list": d["thread"]["comment_list"]
-                        }
-                      });
-                    }}
-                  >
-                    {d["thread"]["thread_name"]}
-                  </button>
-                </div>
-              );
-            })
-          }
+          <div class="thread-back">
+            <div class="thread-text">スレッド</div>
+            {loading && <CircularProgress color="inherit" />}
+            {
+              data["thread_list"].map((d) => {
+                return (
+                  <div class="box-back">
+                    <Button class="gray-box" variant="outlined"
+                      onClick={() => {
+                        const id = d["thread"]["thread_id"];
+                        navigate(`${ROUTES.THREAD}`, {
+                          state: {
+                            "thread_id": d["thread"]["thread_id"],
+                            "thread_name": d["thread"]["thread_name"],
+                            "comment_list": d["thread"]["comment_list"]
+                          }
+                        });
+                      }}
+                    >
+                      {d["thread"]["thread_name"]}
+                    </Button>
+                  </div>
+                );
+              })
+            }
+          </div>
         </div>
       </body>
     </div>
