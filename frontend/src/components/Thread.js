@@ -15,6 +15,7 @@ const Thread = (props) => {
   const [text, setText] = useState();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  var i = 1;
 
   const apiClient = ApiClient.instance;
 
@@ -81,7 +82,7 @@ const Thread = (props) => {
                 return (
                   <div>
                     <p>
-                      {d["comment"]["comment_id"]}: {d["comment"]["name"]}
+                      {i++}: {d["comment"]["name"]}
                     </p>
                     <p>
                       {d["comment"]["content"]}

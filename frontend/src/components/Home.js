@@ -24,11 +24,9 @@ const Popup = (props) => {
       return;
     }
     const data = { "thread_add": { "thread_name": name } };
-    console.log(data);
     apiClient
       .post("home", data)
       .then((res) => {
-        console.log(res);
         navigate(ROUTES.HOME);
         props.setLoading(true);
         apiClient
