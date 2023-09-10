@@ -42,7 +42,6 @@ echo "PUT YOUR API KEY for ChatGPT" > api_key.txt
 * Run ChatGPT
 ```bash
 cd backend
-echo "PUT YOUR API KEY for ChatGPT" > api_key.txt
 python GPT.py
 ```
 
