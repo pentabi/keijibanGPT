@@ -1,7 +1,6 @@
 FROM python:3.11.5
 
 WORKDIR /app
-ENV FLASK_APP=app
 
 USER root
 
@@ -14,7 +13,7 @@ ENV LC_ALL ja_JP.UTF-8
 ENV TZ JST-9
 ENV TERM xterm
 
-COPY ./requirements.txt /root/
+COPY ./requirements.txt /app
 
 RUN apt-get install -y fonts-noto-cjk vim less
 
