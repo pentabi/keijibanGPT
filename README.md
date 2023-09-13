@@ -29,7 +29,7 @@ docker-compose up
 cd backend
 echo "PUT YOUR API KEY for ChatGPT" > api_key.txt
 ```
-*`"PUT YOUR API KEY for ChatGPT"`の部分はあなたのAPI KEYに変更してください。API KEYは[こちら](https://platform.openai.com/account/api-keys){:target="_blank"}で入手できます。*
+`"PUT YOUR API KEY for ChatGPT"`の部分はあなたのAPI KEYに変更してください。API KEYは[こちら](https://platform.openai.com/account/api-keys){:target="_blank"}で入手できます。
 
 * Run ChatGPT (Use another terminal)
 ```bash
