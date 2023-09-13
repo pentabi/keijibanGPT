@@ -53,11 +53,9 @@ rm comment.db thread.db
 
 ## Share your Bulletin Board
 1. Change your branch from `main` to `share`
-2. Run frontend server and check your Network IP address[^1]
+2. Run frontend server and check your Network IP address
+![IP Address](img/description.png)
 3. Add this IP address to `frontend/src/api/ApiClient.js`
-
-[^1]: Please check below image
-![Network IP address](img/description.png)
 
 ## Design
 このプロジェクトでは、フロントエンドにはReact、バックエンドではFlaskを用いた掲示板アプリを作成しました。ユーザーは自由にスレッド、コメントを追加することが出来ます。データベースにはSQLiteを用いており、FlaskがSQLiteにデータを保存しています。また、20分に一度、ChatGPTがデータベースにアクセスし、コメントをそれぞれのスレッドに追加します。
