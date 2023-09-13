@@ -26,5 +26,5 @@ def thread(id):
         add_comment(request.get_json())
         return jsonify("success")
 
-if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+# if __name__ == '__main__':
+#     app.run(debug=True, port=8000)
