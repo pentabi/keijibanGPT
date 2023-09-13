@@ -19,4 +19,4 @@ RUN apt-get install -y fonts-noto-cjk vim less
 
 RUN pip install --upgrade pip setuptools
 
-RUN pip install -r /root/requirements.txt
+RUN pip install -r /app/requirements.txt
