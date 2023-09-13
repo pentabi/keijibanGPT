@@ -13,35 +13,28 @@ WINCハッカソン夏期２０２３グループ３のアプリ
 ## Getting Started
 
 ### Requires
-* Windows 10/11, Mac OS 12.6.7
-* node v18.17.1
+* Mac OS 12.6.7 or Ubuntu 22.04.2 LTS
 * Python 3.11.5
 * pip 23.2.1
+* Docker 24.0.5
 
 ### Execute Program
-* Run Frontend Server
+* Run Frontend and Backend Server
 ```bash
-cd frontend
-npm install
-npm start
+docker-compose up
 ```
 
-* Run Backend Server
-```bash
-cd backend
-pip install flask flask_cors numpy SQLAlchemy openai
-python main.py
-```
 * Add your API KEY (First time only)
 ```bash
 cd backend
 echo "PUT YOUR API KEY for ChatGPT" > api_key.txt
 ```
-*`"PUT YOUR API KEY for ChatGPT"`の部分はあなたのAPI KEYに変更してください。API KEYは[ChatGPT API KEY](https://platform.openai.com/account/api-keys)で入手できます。*
+*`"PUT YOUR API KEY for ChatGPT"`の部分はあなたのAPI KEYに変更してください。API KEYは[こちら](https://platform.openai.com/account/api-keys)で入手できます。*
 
-* Run ChatGPT
+* Run ChatGPT (Use another terminal)
 ```bash
 cd backend
+pip install openai
 python GPT.py
 ```
 
@@ -49,6 +42,11 @@ python GPT.py
 ```bash
 cd backend
 rm comment.db thread.db
+```
+
+* Delete Docker
+```bash
+docker-compose down
 ```
 
 ## Share your Bulletin Board
